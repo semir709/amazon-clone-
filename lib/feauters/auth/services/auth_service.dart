@@ -1,13 +1,12 @@
 import 'dart:convert';
 
+import 'package:amazon_clone_me/common/widgets/bottom_bar.dart';
 import 'package:amazon_clone_me/constants/error_handling.dart';
 import 'package:amazon_clone_me/constants/utils.dart';
 import 'package:amazon_clone_me/feauters/home/home_screen.dart';
 import 'package:amazon_clone_me/models/user.dart';
 import 'package:amazon_clone_me/providers/user_provider.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:http/http.dart' as http;
 import 'package:amazon_clone_me/env_var.dart';
 import 'package:provider/provider.dart';
@@ -70,7 +69,7 @@ class AuthService {
             await prefs.setString(
                 'x-auth-token', jsonDecode(res.body)['token']);
             Navigator.pushNamedAndRemoveUntil(
-                context, HomeScreen.routeName, (route) => false);
+                context, BottomBar.routeName, (route) => false);
           });
     } catch (err) {
       showSnackBar(context, err.toString());
